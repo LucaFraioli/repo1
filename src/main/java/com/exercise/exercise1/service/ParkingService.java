@@ -10,7 +10,7 @@ import java.util.List;
 public interface ParkingService {
 
     // Save operation
-    Parking saveParking(@Valid ParkingDTO parking);
+    Parking saveParking(@Valid ParkingDTO parking, Long idUser);
 
     // Read operation
     List<Parking> fetchParkingList();
@@ -20,5 +20,8 @@ public interface ParkingService {
 
     // Delete operation
     void deleteParkingById(Long parkingId);
+
+    //api connection
+    Long retrieveIdByCode(String code);
 
 }

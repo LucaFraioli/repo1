@@ -29,4 +29,6 @@ public class Parking {
     private String parkingEntrance;
     @Column(name = "exit")
     private String parkingExit;
+    @Column(name= "id_User")
+    private Long idUser;
 }

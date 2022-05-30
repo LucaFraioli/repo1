@@ -24,9 +24,9 @@ public class ParkingController {
             @Valid
             @RequestBody ParkingDTO parking)
     {
-        // log.debug(parking.toString());
+        log.debug(parking.toString());
         // return null;
-        return parkingService.saveParking(parking);
+        return parkingService.saveParking(parking, parkingService.retrieveIdByCode(parking.getCf()));
     }
 
     // Read operation
