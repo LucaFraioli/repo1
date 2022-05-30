@@ -78,18 +78,6 @@ implements ParkingService {
         parkingRepository.deleteById(parkingId);
     }
 
-    @Override
-    public Long retrieveIdByCode(String code) {
-        URI url = URI.create("http://localhost:8084/api/customer/request/" + code);
-
-        RestTemplate restTemplate = new RestTemplate();
-        Long result = restTemplate.getForObject(url, Long.class);
-
-       //RestTemplate restTemplate = new RestTemplate();
-       //Long result = restTemplate.getForObject(url, Long.class);
-        log.debug(result.toString());
-        return result;
-    }
 }
 
 

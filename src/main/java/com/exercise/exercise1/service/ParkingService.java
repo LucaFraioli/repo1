@@ -21,7 +21,4 @@ public interface ParkingService {
     // Delete operation
     void deleteParkingById(Long parkingId);
 
-    //api connection
-    Long retrieveIdByCode(String code);
-
 }

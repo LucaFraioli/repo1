@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @RestController
@@ -24,9 +25,10 @@ public class ParkingController {
             @Valid
             @RequestBody ParkingDTO parking)
     {
-        log.debug(parking.toString());
-        // return null;
-        return parkingService.saveParking(parking, parkingService.retrieveIdByCode(parking.getCf()));
+        String uri = "http://localhost:8084/api/customer/request/" + parking.getCf();
+        RestTemplate restTemplate = new RestTemplate();
+        Long result = restTemplate.getForObject(uri, Long.class);
+        return parkingService.saveParking(parking, result);
     }
 
     // Read operation
