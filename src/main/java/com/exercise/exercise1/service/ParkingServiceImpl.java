@@ -2,6 +2,7 @@
 package com.exercise.exercise1.service;
 
 import com.exercise.exercise1.entity.Parking;
+import com.exercise.exercise1.entity.ParkingDTO;
 import com.exercise.exercise1.repository.ParkingRepository;
 
 import java.util.List;
@@ -19,9 +20,13 @@ implements ParkingService {
 
     // Save operation
     @Override
-    public Parking saveParking(Parking parking)
+    public Parking saveParking(ParkingDTO parking)
     {
-        return parkingRepository.save(parking);
+        Parking parkingEntity = new Parking();
+        parkingEntity.setParkingPlate(parking.getParkingPlate()); // prendo il parkingplate da parking e lo assegno a quello di entity
+        parkingEntity.setParkingExit(parking.getParkingExit());
+        parkingEntity.setParkingEntrance(parking.getParkingEntrance());
+        return parkingRepository.save(parkingEntity); // qui devo mettere il dto ma visto che non è un entity non posso usare direttamente il metodo save
     }
 
     // Read operation

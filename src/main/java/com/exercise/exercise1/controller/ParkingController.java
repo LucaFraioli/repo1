@@ -2,15 +2,18 @@
 package com.exercise.exercise1.controller;
 
 import com.exercise.exercise1.entity.Parking;
+import com.exercise.exercise1.entity.ParkingDTO;
 import com.exercise.exercise1.service.ParkingService;
 import java.util.List;
 
 import javax.validation.Valid;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
-
 public class ParkingController {
 
     @Autowired private ParkingService parkingService;
@@ -19,8 +22,10 @@ public class ParkingController {
     @PostMapping("/departments")
     public Parking saveParking(
             @Valid
-            @RequestBody Parking parking)
+            @RequestBody ParkingDTO parking)
     {
+        // log.debug(parking.toString());
+        // return null;
         return parkingService.saveParking(parking);
     }
 

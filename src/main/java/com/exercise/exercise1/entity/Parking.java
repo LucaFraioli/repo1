@@ -14,8 +14,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-
-
+@ToString
 // Class
 public class Parking {
 
